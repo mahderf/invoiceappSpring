@@ -34,7 +34,7 @@ public class Minvcontrollers {
     @PostMapping("/addproduct")
     public String productSubmit(@ModelAttribute ("map")Invoiceapp newindex)
     {
-        //System.out.println(invoice.getPdsc());
+
         return "indextwo";
     }
     @RequestMapping("/listproducts")
