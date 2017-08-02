@@ -1,7 +1,11 @@
 package basicinvoiceapp.invoiceapp.invoiceControllers;
 
+import basicinvoiceapp.invoiceapp.Invoiceapp;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,13 +24,18 @@ public class Minvcontrollers {
         lmod.addAttribute("myMessage",lmsg);
         return "newindex";
     }
-    @RequestMapping("/addproduct")
+    @GetMapping("/addproduct")
     public String adprdct(Model pmod)
     {
-        String pmsg="Add the product here";
-        pmod.addAttribute("myMessage",pmsg);
+        //String pmsg="Add the product here";
+        pmod.addAttribute("newindex",new Invoiceapp());
         return "newindex";
-
+    }
+    @PostMapping("/addproduct")
+    public String productSubmit(@ModelAttribute ("map")Invoiceapp newindex)
+    {
+        //System.out.println(invoice.getPdsc());
+        return "indextwo";
     }
     @RequestMapping("/listproducts")
     public String lstprdct(Model lstmod)
