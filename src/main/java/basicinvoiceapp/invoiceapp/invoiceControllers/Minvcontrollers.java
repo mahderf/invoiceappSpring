@@ -31,7 +31,7 @@ public class Minvcontrollers {
     @RequestMapping("/listproducts")
     public String lstprdct(Model lstmod)
     {
-        String lstmsg="This is the List of your products";
+        String lstmsg="The dependencies used are: 1: Web, 2:thymeleaf";
         lstmod.addAttribute("myMessage", lstmsg);
         return "newindex";
     }
