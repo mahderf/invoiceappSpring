@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Checking products</title>
+</head>
+<body>
+<h1>Search Result</h1>
+<p th:text="${map.pdsc}"/>
+<p th:text="'price: '+${map.price}" />
+<p th:text="'itcd: '+${map.itcd}"/>
+<a href="/addproduct">Submit another message</a>
+
+</body>
+</html>

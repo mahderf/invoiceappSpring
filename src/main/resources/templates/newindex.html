@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymleaf.org">
+<html xmlns:th="http://www.thymleaf.org">
 <head>
     <!-- This is a comment with many lines
      and all of them are commented
      until the end-->
-    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Invoice app</title>
 </head>
 <body>
-The invoice body
-<h2>Calculating invoice</h2>
-<p>Do you whant know how you are paying</p>
-<p th:text="${myMessage}"></p>
-<p th:text="${message}"></p>
+<h1>Calculating invoice</h1>
+<form action="#" th:action="@{/addproduct}" th:object="${newindex}" method="post">
+    <p>pdsc:<input type="text" th:field="*{pdsc}" /></p>
+    <p>price:<input type="text" th:field="*{price}" /></p>
+    <p>itcd:<input type="text" th:field="*{itcd}" /></p>
+    <p><input type="submit" value="submit" />
+        <input type="reset" value="Reset" /></p>
+</form>
+
 </body>
 </html>
