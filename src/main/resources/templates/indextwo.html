@@ -6,10 +6,9 @@
     <title>Checking products</title>
 </head>
 <body>
-<h1>Search Result</h1>
-<p th:text="${map.pdsc}"/>
-<p th:text="'price: '+${map.price}" />
-<p th:text="'itcd: '+${map.itcd}"/>
+<p> th:text="'price: '+${newindex.price}"></p>
+<p> th:text="'price: '+${newindex.pdsc}"></p>
+<p> th:text="'itcd: '+${newindex.itcd}"></p>
 <a href="/addproduct">Submit another message</a>
 
 </body>

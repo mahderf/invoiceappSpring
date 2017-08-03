@@ -1,42 +1,44 @@
 package basicinvoiceapp.invoiceapp.invoiceControllers;
 
-import basicinvoiceapp.invoiceapp.Invoiceapp;
+import basicinvoiceapp.invoiceapp.repositories.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 public class Minvcontrollers {
-    @RequestMapping("/index")
-    public String newindex(Model nmodl)
+    @Autowired
+    ProductRepository productRepository;
+
+    @RequestMapping("/")
+    public String logindex(Model model)
     {
-        String msgs="Welcome to the invoice app";
-        nmodl.addAttribute("myMessage", msgs);
-        return "newindex";
-    }
-    @RequestMapping("/login")
-    public String logindex(Model lmod)
-    {
-       String lmsg="This is the login page";
-        lmod.addAttribute("myMessage",lmsg);
-        return "newindex";
+       String message="This is the login page";
+        model.addAttribute("Message",message);
+        return "firstln";
     }
     @GetMapping("/addproduct")
-    public String adprdct(Model pmod)
+    public String adprdct(Model model)
     {
         //String pmsg="Add the product here";
-        pmod.addAttribute("newindex",new Invoiceapp());
+        model.addAttribute("newindex",new Invoiceapp());
         return "newindex";
     }
     @PostMapping("/addproduct")
-    public String productSubmit(@ModelAttribute ("map")Invoiceapp newindex)
+    public String productSubmit(@Valid @ModelAttribute ("newindex")Invoiceapp newindex, BindingResult bindingResult)
     {
-
+       if(bindingResult.hasErrors()) {
+           return "addproduct";
+       }
+        productRepository.save(newindex);
         return "indextwo";
     }
+
+
     @RequestMapping("/listproducts")
     public String lstprdct(Model lstmod)
     {
@@ -46,4 +48,6 @@ public class Minvcontrollers {
         lstmod.addAttribute("message", lstmsg2);
         return "newindex";
     }
+
+
 }
