@@ -4,12 +4,12 @@
     <!-- This is a comment with many lines
      and all of them are commented
      until the end-->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Invoice app</title>
 </head>
 <body>
 <h1>Calculating invoice</h1>
-<form action="#" th:action="@{/addproduct}" th:object="${newindex}" method="post">
+<form action="#" th:action="@{/addproduct}" th:object="${newinvoiceapp}" method="post">
     <p>pdsc:<input type="text" th:field="*{pdsc}" /></p>
     <p>price:<input type="text" th:field="*{price}" /></p>
     <p>itcd:<input type="text" th:field="*{itcd}" /></p>

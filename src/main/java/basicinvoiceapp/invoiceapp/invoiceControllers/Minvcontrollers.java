@@ -14,40 +14,32 @@ public class Minvcontrollers {
     @Autowired
     ProductRepository productRepository;
 
-    @RequestMapping("/")
-    public String logindex(Model model)
+    @GetMapping("/")
+    public String showindex(Model model)
     {
-       String message="This is the login page";
-        model.addAttribute("Message",message);
-        return "firstln";
+       String myMessage="This is the login page";
+        model.addAttribute("message",myMessage);
+        return "index";
     }
     @GetMapping("/addproduct")
-    public String adprdct(Model model)
+    public String addProduct(Model model)
     {
         //String pmsg="Add the product here";
-        model.addAttribute("newindex",new Invoiceapp());
-        return "newindex";
+        model.addAttribute("newinvoiceapp",new Invoiceapp());
+        return "addproduct";
     }
     @PostMapping("/addproduct")
-    public String productSubmit(@Valid @ModelAttribute ("newindex")Invoiceapp newindex, BindingResult bindingResult)
+    public String postProduct(@Valid @ModelAttribute ("newinvoiceapp")Invoiceapp otherinvoiceapp, BindingResult bindingResult)
     {
        if(bindingResult.hasErrors()) {
            return "addproduct";
        }
-        productRepository.save(newindex);
-        return "indextwo";
+        productRepository.save(otherinvoiceapp);
+        return "result";
     }
 
 
-    @RequestMapping("/listproducts")
-    public String lstprdct(Model lstmod)
-    {
-        String lstmsg="This are the List of products";
-        String lstmsg2="The dependencies used are: 1: Web, 2:thymeleaf";
-        lstmod.addAttribute("myMessage", lstmsg);
-        lstmod.addAttribute("message", lstmsg2);
-        return "newindex";
-    }
+
 
 
 }
